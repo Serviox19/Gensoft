@@ -1,0 +1,24 @@
+{
+  "name": "gensoft",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serviox19/Gensoft.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Serviox19/Gensoft/issues"
+  },
+  "homepage": "https://github.com/Serviox19/Gensoft#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "http": "0.0.0"
+  }
+}

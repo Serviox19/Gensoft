@@ -6,6 +6,8 @@ const server = http.createServer(app);
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
+var db = require('./config/db');
+
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -13,9 +15,9 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use("/public", express.static(__dirname + "/public"));
 
-app.get('*', function (req, res) {
-  res.sendFile(process.cwd() + '/public/index.html');
-});
+//routes
+var routes = require('./config/index');
+app.use('/', routes);
 
 
 server.listen(PORT, function () {

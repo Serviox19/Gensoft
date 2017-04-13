@@ -10,7 +10,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: ""
     })
     .state('dash', {
-      url: "/home",
+      url: "/dashboard",
       templateUrl: "/public/partials/dashboard.html",
       controller: ""
     })

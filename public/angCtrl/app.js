@@ -4,7 +4,7 @@ app.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       templateUrl: '/public/partials/login.html',
-      controller: ''
+      controller: 'HomeCtrl'
     })
     .when('/register', {
       templateUrl: '/public/partials/signup.html',
@@ -33,7 +33,7 @@ var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
     } else { //User is not Authenticated
       $rootScope.errorMessage = 'You need to log in.';
       deferred.reject();
-      $location.url('/login');
+      $location.url('/');
     }
   });
   return deferred.promise;

@@ -1,20 +1,40 @@
-var app = angular.module('gensoft', ['ui.router']);
+var app = angular.module("gensoft", ["ngRoute"]);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/');
-
-  $stateProvider
-    .state('home', {
-      url: "/",
-      templateUrl: "/public/partials/login.html",
-      controller: ""
+app.config(function($routeProvider, $locationProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: '/public/partials/login.html',
+      controller: ''
     })
-    .state('dash', {
-      url: "/dashboard",
-      templateUrl: "/public/partials/dashboard.html",
-      controller: ""
+    .when('/register', {
+      templateUrl: '/public/partials/signup.html',
+      controller: 'SignUpCtrl'
     })
-
-
-  $locationProvider.html5Mode(true);
+    .when('/dashboard', {
+      templateUrl: '/public/partials/dashboard.html',
+      resolve: {
+        logincheck: checkLoggedin
+      }
+    })
+    .otherwise({
+      redirectTo: '/'
+    })
 });
+
+var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
+  var deferred = $q.defer();
+
+  $http.get('/loggedin').success(function(user) {
+    $rootScope.errorMessage = null;
+    //User is Authenticated
+    if (user !== '0') {
+      $rootScope.currentUser = user;
+      deferred.resolve();
+    } else { //User is not Authenticated
+      $rootScope.errorMessage = 'You need to log in.';
+      deferred.reject();
+      $location.url('/login');
+    }
+  });
+  return deferred.promise;
+}

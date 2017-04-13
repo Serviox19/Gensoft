@@ -6,8 +6,6 @@ const server = http.createServer(app);
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-var db = require('./config/db');
-
 app.use(logger('dev'));
 
 //Passport
@@ -29,10 +27,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use("/public", express.static(__dirname + "/public"));
 
-//routes
-var routes = require('./config/auth');
-app.use('/', routes);
-
+require('./config/auth.js')(app, passport);
 
 server.listen(PORT, function () {
   console.log('Listening on PORT: ' + PORT);

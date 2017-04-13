@@ -22,6 +22,12 @@
     "http": "0.0.0",
     "body-parser": "*",
     "mongoose": "*",
-    "morgan": "*"
+    "morgan": "*",
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express-session": "*",
+    "passport": "*",
+    "passport-local": "*"
   }
 }

@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 if (process.env.PORT) {
   // use hosted db
 } else {
-  mongoose.connect('mongodb://localhost:27017/inventory-management');
+  mongoose.connect('mongodb://localhost:27017/inventory');
 }
 
 var db = mongoose.connection;

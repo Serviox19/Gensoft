@@ -14,11 +14,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "/public/partials/dashboard.html",
       controller: ""
     })
-    .state('signup', {
-      url: "/signup",
-      templateUrl: "/public/partials/signup.html",
-      controller: ""
-    })
 
 
   $locationProvider.html5Mode(true);

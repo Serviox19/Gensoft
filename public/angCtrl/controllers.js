@@ -19,7 +19,6 @@ app.controller("HomeCtrl", function($location, $scope, $http, $rootScope) {
 
 app.controller("SignUpCtrl", function($scope, $http, $rootScope, $location) {
   $scope.signup = function(user) {
-
     if (user.password == user.password2) {
       $http.post('/signup', user)
         .success(function(user) {

@@ -30,7 +30,8 @@ var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
     if (user !== '0') {
       $rootScope.currentUser = user;
       deferred.resolve();
-    } else { //User is not Authenticated
+    } else {
+      //User is not Authenticated
       $rootScope.errorMessage = 'You need to log in.';
       deferred.reject();
       $location.url('/');

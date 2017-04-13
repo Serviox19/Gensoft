@@ -23,7 +23,7 @@
         </div>
         <div class="collapse navbar-collapse" id="nav-toggle">
           <ul class="nav navbar-nav navbar-right">
-            <span ng-show="currentUser">
+            <span ng-hide="!currentUser">
     		     <a href="#logout" ng-click="logout()">Logout</a>
     		    </span>
           </ul>

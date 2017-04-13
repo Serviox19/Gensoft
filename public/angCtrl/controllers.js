@@ -1,5 +1,4 @@
 
-
 app.controller("HomeCtrl", function($location, $scope, $http, $rootScope) {
   $scope.login = function(user) {
     $http.post('/login', user)

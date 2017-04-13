@@ -1,8 +1,6 @@
-const http = require('http');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const server = http.createServer(app);
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
@@ -16,7 +14,7 @@ require('./config/passport')(passport); // pass passport for configuration
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 app.use(session({
-  secret: 'this is the secret'
+  secret: 'super secret'
 }));
 app.use(cookieParser());
 app.use(passport.initialize());
@@ -29,6 +27,6 @@ app.use("/public", express.static(__dirname + "/public"));
 
 require('./config/auth.js')(app, passport);
 
-server.listen(PORT, function () {
+app.listen(PORT, function () {
   console.log('Listening on PORT: ' + PORT);
 });

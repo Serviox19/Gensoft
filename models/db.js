@@ -18,4 +18,4 @@ db.once('open', function() {
   console.log('Mongoose Connection Successful');
 });
 
-module.exports.User = require("./user");
+module.exports.User = require("./User");

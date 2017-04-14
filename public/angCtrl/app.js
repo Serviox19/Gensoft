@@ -17,10 +17,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('dash', {
       url: "/dashboard",
       templateUrl: "partials/dashboard.html",
+      controller: "DashCtrl",
       resolve: {
         logincheck: checkLoggedin
-      },
-      controller: "DashCtrl"
+      }
     })
 });
 
@@ -56,7 +56,9 @@ app.controller("HomeCtrl", function($location, $scope, $http, $rootScope) {
         $location.path("/dashboard");
       });
   }
+});
 
+app.controller("NavCtrl", function($rootScope, $scope, $http, $location) {
   $scope.logout = function() {
     $http.post("/logout")
       .success(function() {

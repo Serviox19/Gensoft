@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const logger = require('morgan');
 const db = require('./models/db');
+const Product = require('./models/Product');
 
 app.use(logger('dev'));
 
@@ -18,7 +19,9 @@ require('./config/passport')(passport); // pass passport for configuration
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 app.use(session({
-  secret: 'this is the secret'
+  secret: 'super secret',
+  resave: false,
+  saveUninitialized: true,
 }));
 app.use(cookieParser());
 app.use(passport.initialize());
@@ -34,8 +37,6 @@ app.use(bodyParser.urlencoded({
 app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/public/index.html');
 });
-
-// Auth Routes
 
 //handle login
 app.post('/login', passport.authenticate('local-login'), function(req, res) {
@@ -73,9 +74,33 @@ app.post('/signup', function(req, res) {
             return next(err);
           }
           res.json(user);
-          res.send(200);
         });
       });
+    }
+  });
+});
+
+// Products
+app.get('/products', function(req, res){
+  Product.find(function(err, docs){
+    if (err){
+      console.log(err);
+      res.send(err);
+    } else {
+      res.send(docs);
+    }
+  });
+});
+
+app.post('/newproduct', function(req, res){
+  var newProduct = new Product(req.body);
+  newProduct.save(function(err, doc){
+    if (err){
+      console.log(err);
+      res.send(err);
+    } else {
+      console.log(doc);
+      res.send(doc);
     }
   });
 });

@@ -14,7 +14,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('dash', {
       url: "/dashboard",
-      templateUrl: "partials/dashboard.html"
+      templateUrl: "partials/dashboard.html",
+      resolve: {
+        logincheck: checkLoggedin
+      }
     })
 });
 
@@ -30,7 +33,7 @@ var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
     } else { //User is not Authenticated
       $rootScope.errorMessage = 'You need to log in.';
       deferred.reject();
-      $location.url('/login');
+      $location.path('/');
     }
   });
   return deferred.promise;
@@ -41,7 +44,7 @@ app.controller("HomeCtrl", function($location, $scope, $http, $rootScope) {
     $http.post('/login', user)
       .success(function(response) {
         $rootScope.currentUser = response;
-        $location.url("/dashboard");
+        $location.path("/dashboard");
       });
   }
 
@@ -49,7 +52,7 @@ app.controller("HomeCtrl", function($location, $scope, $http, $rootScope) {
     $http.post("/logout")
       .success(function() {
         $rootScope.currentUser = null;
-        $location.url("/");
+        $location.path("/");
       });
   }
 });
@@ -60,7 +63,7 @@ app.controller("SignUpCtrl", function($scope, $http, $rootScope, $location) {
       $http.post('/signup', user)
         .success(function(user) {
           $rootScope.currentUser = user;
-          $location.url("/dashboard");
+          $location.path("/dashboard");
         });
     }
   }

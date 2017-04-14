@@ -8,8 +8,9 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use(express.static("public"));
-app.use("/public", express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
+app.use('/public', express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public/partials"));
 
 //Passport
 var passport = require('passport');
@@ -24,8 +25,12 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/', function(req, res) {
+  res.sendFile(process.cwd() + '/index.html');
+});
+
 var routes = require('./config/index');
-app.use('/', routes);
+app.use('/auth', routes);
 
 app.listen(PORT, function () {
   console.log('Listening on PORT: ' + PORT);

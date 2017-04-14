@@ -3,10 +3,6 @@ const passport = require('./passport');
 const router = express.Router();
 const db = require('../models/db');
 
-router.get('/', function(req, res) {
-  res.sendFile(process.cwd() + '/index.html');
-});
-
 // process the login form
 router.post('/login', passport.authenticate('local-login'), function(req, res) {
   res.json(req.user);

@@ -6,7 +6,7 @@
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
   </head>
   <body>
 
@@ -19,7 +19,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#/">Management System</a>
+          <a class="navbar-brand" href="/">Management System</a>
         </div>
         <div class="collapse navbar-collapse" id="nav-toggle">
           <ul class="nav navbar-nav navbar-right">
@@ -32,12 +32,11 @@
     </nav>
 
 
-    <div ng-view></div>
+    <div ui-view></div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script src="./angCtrl/app.js"></script>
-    <script src="./angCtrl/controllers.js"></script>
+    <script src="./public/angCtrl/app.js"></script>
   </body>
 </html>

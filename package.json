@@ -18,15 +18,15 @@
   },
   "homepage": "https://github.com/Serviox19/Gensoft#readme",
   "dependencies": {
-    "express": "^4.15.2",
-    "http": "0.0.0",
-    "body-parser": "*",
-    "mongoose": "*",
-    "morgan": "*",
+    "angular-ui-router": "^0.4.2",
     "bcrypt-nodejs": "*",
     "body-parser": "*",
     "cookie-parser": "*",
+    "express": "^4.15.2",
     "express-session": "*",
+    "http": "0.0.0",
+    "mongoose": "*",
+    "morgan": "*",
     "passport": "*",
     "passport-local": "*"
   }

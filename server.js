@@ -73,6 +73,7 @@ app.post('/signup', function(req, res) {
             return next(err);
           }
           res.json(user);
+          res.send(200);
         });
       });
     }

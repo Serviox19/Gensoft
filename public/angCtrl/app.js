@@ -20,14 +20,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
       resolve: {
         logincheck: checkLoggedin
       },
-      controller: ""
+      controller: "DashCtrl"
     })
 });
 
 var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
   var deferred = $q.defer();
 
-  $http.get('loggedin').success(function(user) {
+  $http.get('/loggedin').success(function(user) {
     $rootScope.errorMessage = null;
     //User is Authenticated
     if (user !== '0') {
@@ -41,6 +41,12 @@ var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
   });
   return deferred.promise;
 }
+
+app.controller('DashCtrl', function ($scope) {
+  $scope.addShipment = function () {
+    console.log('add shipment');
+  }
+});
 
 app.controller("HomeCtrl", function($location, $scope, $http, $rootScope) {
   $scope.login = function(user) {

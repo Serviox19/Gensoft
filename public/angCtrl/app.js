@@ -6,18 +6,21 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('home', {
       url: "/",
-      templateUrl: "partials/login.html"
+      templateUrl: "partials/login.html",
+      controller: "HomeCtrl"
     })
     .state('register', {
       url: "/register",
-      templateUrl: "partials/signup.html"
+      templateUrl: "partials/signup.html",
+      controller: "SignUpCtrl"
     })
     .state('dash', {
       url: "/dashboard",
       templateUrl: "partials/dashboard.html",
       resolve: {
         logincheck: checkLoggedin
-      }
+      },
+      controller: ""
     })
 });
 

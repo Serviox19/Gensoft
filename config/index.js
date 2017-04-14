@@ -7,6 +7,11 @@ module.exports = function(app, passport) {
     res.json(req.user);
   });
 
+  // process the login form
+  app.post('/login', passport.authenticate('local-login'), function(req, res) {
+    res.json(req.user);
+  });
+
   // handle logout
   app.post('/logout', function(req, res) {
     req.logOut();

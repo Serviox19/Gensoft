@@ -1,30 +1,27 @@
-var app = angular.module("gensoft", ["ngRoute"]);
+const app = angular.module('gensoft', ['ui.router']);
 
-app.config(function($routeProvider, $locationProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: '/public/partials/login.html',
-      controller: 'HomeCtrl'
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  $urlRouterProvider.otherwise("/");
+
+  $stateProvider
+    .state('home', {
+      url: "/",
+      templateUrl: "partials/login.html"
     })
-    .when('/signup', {
-      templateUrl: '/public/partials/signup.html',
-      controller: 'SignUpCtrl'
+    .state('register', {
+      url: "/register",
+      templateUrl: "partials/signup.html"
     })
-    .when('/dashboard', {
-      templateUrl: '/public/partials/dashboard.html',
-      resolve: {
-        logincheck: checkLoggedin
-      }
-    })
-    .otherwise({
-      redirectTo: '/'
+    .state('dash', {
+      url: "/dashboard",
+      templateUrl: "partials/dashboard.html"
     })
 });
 
 var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
   var deferred = $q.defer();
 
-  $http.get('/loggedin').success(function(user) {
+  $http.get('loggedin').success(function(user) {
     $rootScope.errorMessage = null;
     //User is Authenticated
     if (user !== '0') {

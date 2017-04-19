@@ -4,3 +4,12 @@
   padding: 15px;
   border: solid 2px #D3D3D3;
 }
+
+.dash-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#company-div {
+  margin-bottom: 25px;
+}

@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 3000;
 const logger = require('morgan');
 const db = require('./config/db');
 const mongoose = require('mongoose');
-const Product = require('./models/Product');
 
 app.use(logger('dev'));
 

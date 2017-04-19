@@ -9,11 +9,12 @@ app.use(logger('dev'));
 
 app.use(express.static(__dirname + "/public"));
 app.use('/public', express.static(__dirname + "/public"));
-app.use(express.static(__dirname + "/public/partials"));
+app.use(express.static(__dirname + "/public/views"));
+app.use('/bower_components', express.static(__dirname + "/bower_components"));
 
 
 app.get('/', function(req, res) {
-  res.sendFile(process.cwd() + '/public/index.html');
+  res.send('/public/views/index.html');
 });
 
 // Products

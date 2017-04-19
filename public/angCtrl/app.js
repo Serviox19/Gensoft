@@ -1,7 +1,7 @@
 const app = angular.module('gensoft', ['ui.router']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise("/");
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('home', {
@@ -9,6 +9,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "views/partials/login.html",
       controller: ""
     })
-
-  $locationProvider.html5Mode(true);
+    .state('dash', {
+      url: "/dashboard",
+      templateUrl: "views/partials/dashboard.html",
+      controller: ""
+    })
+    .state('inbound', {
+      url: "/dashboard/inbound",
+      templateUrl: "views/partials/inbound.html",
+      controller: ""
+    })
+    .state('outbound', {
+      url: "/dashboard/outbound",
+      templateUrl: "views/partials/outbound.html",
+      controller: ""
+    })
 });

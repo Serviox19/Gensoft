@@ -43,8 +43,13 @@ var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
 }
 
 app.controller('DashCtrl', function ($scope) {
-  $scope.addShipment = function () {
-    console.log('add shipment');
+  var productList = this;
+  productList.products = [];
+  productList.getProdeucts = function () {
+    $http.get('/products').then(function (response) {
+      console.log(response.data);
+      productList.products.push(result.data);
+    });
   }
 });
 

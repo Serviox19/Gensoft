@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('dash', {
       url: "/dashboard",
       templateUrl: "views/partials/dashboard.html",
-      controller: ""
+      controller: "DashCtrl"
     })
     .state('inbound', {
       url: "/dashboard/inbound",
@@ -24,4 +24,14 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "views/partials/outbound.html",
       controller: ""
     })
+});
+
+app.controller('DashCtrl', function ($scope, $http) {
+  $http.get('/companies')
+  .then(function (response) {
+    $scope.companies = response.data;
+    console.log($scope.companies);
+  }, function (error) {
+    console.log(error)
+  });
 });

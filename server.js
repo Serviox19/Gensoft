@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3000;
 const logger = require('morgan');
 const db = require('./config/db');
 const mongoose = require('mongoose');
+const Company = require('./models/company');
 
 app.use(logger('dev'));
 
@@ -18,11 +19,17 @@ app.get('/', function(req, res, next) {
 });
 
 // Products
-app.get('/products', function(req, res){
-
+app.get('/companies', function(req, res, next){
+  mongoose.model('Company').find(function(err, docs) {
+    if (!err) {
+      res.send(docs);
+    } else {
+      console.log(err);
+    }
+  });
 });
 
-app.post('/newproduct', function(req, res){
+app.post('/newShipment', function(req, res){
 
 });
 
